@@ -93,10 +93,6 @@ add_executable(map_maintainer src/map_maintainer.cpp )
 add_dependencies(map_maintainer ${PROJECT_NAME}_gencpp)
 target_link_libraries(map_maintainer ${catkin_LIBRARIES} ${libpointmatcher_LIBRARIES})
 
-add_executable(interact_mapper src/interact_mapper.cpp )
-add_dependencies(interact_mapper ${PROJECT_NAME}_gencpp)
-target_link_libraries(interact_mapper ${catkin_LIBRARIES} ${libpointmatcher_LIBRARIES})
-
 add_executable(dynamic_mapper src/dynamic_mapper.cpp )
 add_dependencies(dynamic_mapper ${PROJECT_NAME}_gencpp)
 target_link_libraries(dynamic_mapper ${catkin_LIBRARIES} ${libpointmatcher_LIBRARIES})

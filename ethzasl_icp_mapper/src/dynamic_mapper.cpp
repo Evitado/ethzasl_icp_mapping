@@ -189,7 +189,7 @@ Mapper::Mapper(ros::NodeHandle& n, ros::NodeHandle& pn):
 	useConstMotionModel(getParam<bool>("useConstMotionModel", false)),
 	localizing(getParam<bool>("localizing", true)),
 	mapping(getParam<bool>("mapping", true)),
-	inverseTransform(getParam<bool>("inverseTransform", false)),
+	inverseTransform(getParam<bool>("inverseTransform", true)),
 	minReadingPointCount(getParam<int>("minReadingPointCount", 2000)),
 	minMapPointCount(getParam<int>("minMapPointCount", 500)),
 	inputQueueSize(getParam<int>("inputQueueSize", 10)),
@@ -535,7 +535,18 @@ void Mapper::processCloud(unique_ptr<DP> newPointCloud, const std::string& scann
 			else 
 			{
 				tfBroadcaster.sendTransform(PointMatcher_ros::eigenMatrixToStampedTransform<float>(T_odom_to_map, mapFrame, odomFrame, stamp));
-			}		
+			}
+			
+		/*
+		if (inverseTransform) 
+			{
+				tfBroadcaster.sendTransform(PointMatcher_ros::eigenMatrixToStampedTransform<float>(T_odom_to_map.inverse(), odomFrame, mapFrame, ros::Time::now()));
+			} 
+			else 
+			{
+				tfBroadcaster.sendTransform(PointMatcher_ros::eigenMatrixToStampedTransform<float>(T_odom_to_map, mapFrame, odomFrame, ros::Time::now()));
+			}
+			*/
 		}
 
 		publishLock.unlock();

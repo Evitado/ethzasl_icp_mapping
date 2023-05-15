@@ -9,7 +9,7 @@
 		<param name="icpConfig" value="$(find ethzasl_icp_mapper)/launch/velodyne_64e/icp_dynamic_outdoor.yaml" />
 		<param name="inputFiltersConfig" value="$(find ethzasl_icp_mapper)/launch/velodyne_64e/input_filters_outdoor.yaml" />
 		<param name="mapPostFiltersConfig" value="$(find ethzasl_icp_mapper)/launch/velodyne_64e/mapPost_filters_outdoor.yaml" />
-		<param name="odom_frame" value="base_footprint_tug" />
+		<param name="odom_frame" value="main_sensor" />
 		
 		<param name="map_frame" value="map" />
 		<param name="useROSLogger" value="true" />
@@ -21,6 +21,7 @@
 		<param name="minMapPointCount" value="500" /> <!-- quick fix to have map published each time -->
 		<param name="localizing" value="true" /> 
 		<param name="mapping" value="true" /> 
+		<param name="inverseTransform" value="true" />
 
 
 		<!-- Parameters for dynamic elements -->
